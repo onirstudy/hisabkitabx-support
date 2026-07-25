@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Request deletion of your HisabKitabx account and associated personal data.">
+  <meta name="theme-color" content="#5b3fd3">
+  <title>Delete Account | HisabKitabx</title>
+  <style>
+    :root {
+      --primary: #5b3fd3;
+      --primary-dark: #4329b4;
+      --primary-soft: #eeeaff;
+      --danger: #d92d20;
+      --danger-soft: #fff1f0;
+      --success: #067647;
+      --text: #1d2939;
+      --muted: #667085;
+      --border: #e4e7ec;
+      --surface: #ffffff;
+      --background: #f7f7fc;
+      --shadow: 0 18px 50px rgba(52, 39, 105, 0.12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(91, 63, 211, 0.12), transparent 34rem),
+        var(--background);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--primary);
+    }
+
+    .page {
+      width: min(100% - 32px, 920px);
+      margin: 0 auto;
+      padding: 42px 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 22px;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--primary-dark);
+    }
+
+    .brand-mark {
+      display: grid;
+      width: 44px;
+      height: 44px;
+      place-items: center;
+      border-radius: 13px;
+      color: white;
+      background: linear-gradient(145deg, #7358e7, var(--primary-dark));
+      box-shadow: 0 8px 20px rgba(91, 63, 211, 0.28);
+      font-size: 1.3rem;
+    }
+
+    .card {
+      overflow: hidden;
+      border: 1px solid rgba(228, 231, 236, 0.9);
+      border-radius: 24px;
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .hero {
+      padding: 38px 42px 32px;
+      color: white;
+      background: linear-gradient(135deg, #6247d8, #3f28a3);
+    }
+
+    .eyebrow {
+      margin: 0 0 8px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+      opacity: 0.82;
+    }
+
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 5vw, 3.15rem);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0;
+      color: rgba(255, 255, 255, 0.88);
+      font-size: 1.02rem;
+    }
+
+    .content {
+      padding: 36px 42px 42px;
+    }
+
+    .notice {
+      margin-bottom: 30px;
+      padding: 18px 20px;
+      border: 1px solid #fecdca;
+      border-radius: 14px;
+      color: #912018;
+      background: var(--danger-soft);
+    }
+
+    .notice strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    h2 {
+      margin: 34px 0 12px;
+      font-size: 1.35rem;
+      line-height: 1.3;
+    }
+
+    h2:first-of-type {
+      margin-top: 0;
+    }
+
+    p {
+      margin: 0 0 14px;
+    }
+
+    ul, ol {
+      margin: 12px 0 18px;
+      padding-left: 22px;
+    }
+
+    li + li {
+      margin-top: 8px;
+    }
+
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .data-box {
+      padding: 20px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: #fcfcfd;
+    }
+
+    .data-box h3 {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 10px;
+      font-size: 1rem;
+    }
+
+    .data-box ul {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .request-box {
+      margin-top: 34px;
+      padding: 26px;
+      border: 1px solid #d9d2ff;
+      border-radius: 18px;
+      background: var(--primary-soft);
+    }
+
+    .request-box h2 {
+      margin-top: 0;
+    }
+
+    .field {
+      margin: 18px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 7px;
+      font-size: 0.9rem;
+      font-weight: 700;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #c9c1ef;
+      border-radius: 11px;
+      outline: none;
+      color: var(--text);
+      background: white;
+      font: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    input:focus, textarea:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 4px rgba(91, 63, 211, 0.12);
+    }
+
+    .hint {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .checkbox {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin: 18px 0;
+      color: #344054;
+      font-size: 0.9rem;
+    }
+
+    .checkbox input {
+      flex: 0 0 auto;
+      width: 18px;
+      height: 18px;
+      margin-top: 3px;
+      accent-color: var(--primary);
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 0;
+      border-radius: 12px;
+      padding: 12px 20px;
+      color: white;
+      background: var(--danger);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 800;
+      text-decoration: none;
+      transition: transform 0.15s, filter 0.15s;
+    }
+
+    .button:hover {
+      filter: brightness(0.94);
+      transform: translateY(-1px);
+    }
+
+    .button:focus-visible {
+      outline: 4px solid rgba(217, 45, 32, 0.2);
+      outline-offset: 2px;
+    }
+
+    .status {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      color: var(--success);
+      background: #ecfdf3;
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      margin-top: 10px;
+    }
+
+    .contact a {
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    footer {
+      padding: 24px 4px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 20px, 920px);
+        padding: 18px 0 28px;
+      }
+
+      .hero, .content {
+        padding: 28px 22px;
+      }
+
+      .card {
+        border-radius: 18px;
+      }
+
+      .data-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .request-box {
+        padding: 20px;
+      }
+
+      .button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">₹</span>
+      <span>HisabKitabx</span>
+    </div>
+
+    <article class="card">
+      <header class="hero">
+        <p class="eyebrow">Account &amp; Data</p>
+        <h1>Request account deletion</h1>
+        <p>
+          Use this page to request permanent deletion of your HisabKitabx
+          account and associated personal information.
+        </p>
+      </header>
+
+      <div class="content">
+        <div class="notice">
+          <strong>This action is permanent.</strong>
+          After your request is verified and processed, your deleted account
+          cannot be restored.
+        </div>
+
+        <h2>How the process works</h2>
+        <ol>
+          <li>Enter the email address registered with your HisabKitabx account.</li>
+          <li>Select <strong>Send deletion request</strong>. Your email app will open with a prepared request.</li>
+          <li>Send that email from your registered email address so we can verify ownership.</li>
+          <li>We will process a valid request within <strong>7 working days</strong>.</li>
+        </ol>
+
+        <h2>What happens to your data</h2>
+        <div class="data-grid">
+          <section class="data-box">
+            <h3><span aria-hidden="true">✓</span> Data we delete</h3>
+            <ul>
+              <li>Your login account</li>
+              <li>Email, phone number and profile image</li>
+              <li>Device and notification tokens</li>
+              <li>Your Personal Expenses group and its data</li>
+            </ul>
+          </section>
+
+          <section class="data-box">
+            <h3><span aria-hidden="true">i</span> Data that may remain</h3>
+            <ul>
+              <li>Shared expenses and settlements needed for other members’ balances</li>
+              <li>Such records will be anonymized and shown as “Deleted User”</li>
+              <li>Records required by law, if applicable</li>
+            </ul>
+          </section>
+        </div>
+
+        <section class="request-box" aria-labelledby="request-heading">
+          <h2 id="request-heading">Submit your request</h2>
+          <p>
+            This form does not collect or store your information on this webpage.
+            It prepares an email that you must send to our support address.
+          </p>
+
+          <form id="deletionForm">
+            <div class="field">
+              <label for="email">Registered email address</label>
+              <input
+                id="email"
+                name="email"
+                type="email"
+                autocomplete="email"
+                placeholder="you@example.com"
+                required
+              >
+              <div class="hint">Please use the email connected to your HisabKitabx account.</div>
+            </div>
+
+            <div class="field">
+              <label for="reason">Reason for deletion (optional)</label>
+              <textarea
+                id="reason"
+                name="reason"
+                maxlength="500"
+                placeholder="You may tell us why you want to delete your account."
+              ></textarea>
+            </div>
+
+            <label class="checkbox" for="confirm">
+              <input id="confirm" name="confirm" type="checkbox" required>
+              <span>
+                I understand that account deletion is permanent and some
+                anonymized shared financial records may remain.
+              </span>
+            </label>
+
+            <button class="button" type="submit">
+              <span aria-hidden="true">✉</span>
+              Send deletion request
+            </button>
+
+            <div class="status" id="status" role="status">
+              Your email app has been opened. Please send the prepared email to
+              complete your request.
+            </div>
+          </form>
+        </section>
+
+        <h2>Need help?</h2>
+        <p>
+          If the email button does not work, email us directly from your
+          registered address with the subject “HisabKitabx Account Deletion Request”.
+        </p>
+        <div class="contact">
+          <a href="mailto:truedeepaksingh@gmail.com">truedeepaksingh@gmail.com</a>
+          <a href="tel:+916203073994">+91 62030 73994</a>
+          <a
+            href="https://wa.me/916203073994?text=Hello%2C%20I%20need%20help%20with%20my%20HisabKitabx%20account%20deletion%20request."
+            target="_blank"
+            rel="noopener noreferrer"
+          >WhatsApp support</a>
+        </div>
+      </div>
+    </article>
+
+    <footer>
+      © <span id="year"></span> HisabKitabx. Smart. Simple. Shared.
+    </footer>
+  </main>
+
+  <script>
+    const supportEmail = "truedeepaksingh@gmail.com";
+    const form = document.getElementById("deletionForm");
+    const statusMessage = document.getElementById("status");
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    form.addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      if (!form.reportValidity()) {
+        return;
+      }
+
+      const email = document.getElementById("email").value.trim();
+      const reason = document.getElementById("reason").value.trim();
+      const subject = "HisabKitabx Account Deletion Request";
+      const body = [
+        "Hello HisabKitabx Support,",
+        "",
+        "I request permanent deletion of my HisabKitabx account and associated personal data.",
+        "",
+        "Registered email: " + email,
+        "Reason: " + (reason || "Not provided"),
+        "",
+        "I understand that some anonymized shared expense or settlement records may remain to preserve other group members' balances.",
+        "",
+        "Please process this request within 7 working days.",
+        "",
+        "Thank you."
+      ].join("\n");
+
+      const mailto =
+        "mailto:" + supportEmail +
+        "?subject=" + encodeURIComponent(subject) +
+        "&body=" + encodeURIComponent(body);
+
+      statusMessage.style.display = "block";
+      window.location.href = mailto;
+    });
+  </script>
+</body>
+</html>
